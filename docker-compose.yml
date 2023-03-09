@@ -1,0 +1,18 @@
+version: '3'
+# todo: WRITE THE VARIABLES FOR CONNECT WITH DATABASE
+services:
+  backend:
+    build: ./
+    container_name: nestjs_api
+    environment:
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    image: node:nestjs_api
+    networks:
+      - nestjs_network
+
+networks:
+  nestjs_network:
+    driver: bridge
