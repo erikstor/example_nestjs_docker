@@ -10,7 +10,7 @@ RUN npm run build
 FROM node:alpine
 WORKDIR /home/ubuntu/projects/example_nestjs_docker
 ENV ENVIRONMENT=production
-COPY --from=build /home/ubuntu/projects/example_nestjs_docker/dist/src ./dist
+COPY --from=build /home/ubuntu/projects/example_nestjs_docker/dist/ ./dist
 COPY package*.json ./
 RUN npm install --only=production
 RUN rm package*.json
