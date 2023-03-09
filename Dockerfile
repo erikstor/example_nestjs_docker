@@ -1,6 +1,6 @@
 #build stage
 FROM node:alpine AS build
-WORKDIR /usr/src/app
+WORKDIR /home/ubuntu/projects/example_nestjs_docker
 COPY package*.json ./
 RUN npm install
 COPY . .
@@ -8,9 +8,9 @@ RUN npm run build
 
 #prod stage
 FROM node:alpine
-WORKDIR /usr/src/app
+WORKDIR /home/ubuntu/projects/example_nestjs_docker
 ENV ENVIRONMENT=production
-COPY --from=build /usr/src/app/dist ./dist
+COPY --from=build /home/ubuntu/projects/example_nestjs_docker/dist ./dist
 COPY package*.json ./
 RUN npm install --only=production
 RUN rm package*.json
